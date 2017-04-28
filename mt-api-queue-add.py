@@ -36,7 +36,6 @@ if count==0:
     with open("test.txt", "a") as fl:
         for item in new:
             fl.write(item + '\n')
-			
 
 def mt_conn():    
     try: 
