@@ -12,7 +12,7 @@ dom = "cdn.nexttvnet.ru"
 mikrot="213.79.126.58"
 user="nnk"
 psw="alwest5747"
-print "test"
+
 # resolve domain address
 def check_name():
     check = socket.gethostbyname(dom)
@@ -22,18 +22,19 @@ def check_name():
         
 check_name()
 # check if the new IP exist in the file test.txt
-if len(new)>0:
-    with open("test.txt", "r") as old:
-        for line in old:
+def compare_ip():
+    if len(new)>0:
+        with open("test.txt", "r") as old:
+            for line in old:
             # append all IPs to the lst for future checking on Mikrotik
-            lst.append(line.strip())
-            if line.strip()==new[0].strip():
+                lst.append(line.strip())
+                if line.strip()==new[0].strip():
                 # if duplicate found
-                count+=1
+                    count+=1
     old.close()
-	
+
 # add IP to the list in file
-if count==0:
+def add_new_ip():
     with open("test.txt", "a") as fl:
         for item in new:
             fl.write(item + '\n')
@@ -83,6 +84,11 @@ def mt_conn():
                                 print "SUCCESS! queue for " + que + " has been installed"
                     else:
                         print "WARNING! The queue you're adding already exists!"
-    
+
+
+check_name()
+compare_ip()
+if count == 0:
+    add_new_ip()
 if len(new)>0:
     mt_conn()
