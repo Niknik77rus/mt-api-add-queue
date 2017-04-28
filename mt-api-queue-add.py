@@ -37,6 +37,7 @@ if count==0:
         for item in new:
             fl.write(item + '\n')
 
+
 def mt_conn():    
     try: 
         a = Core(mikrot) 
