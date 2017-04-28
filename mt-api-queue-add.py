@@ -3,7 +3,7 @@ from rosapi import Core
 
 # hardcoded items
 lst = []
-lst2 = []
+lst3 = []
 new = []
 count = 0
 # name of IPTV server
