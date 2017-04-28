@@ -65,7 +65,6 @@ def mt_conn():
                         try:
                             oper = a.response_handler(a.talk(["/queue/simple/add", "=target=" + que, "=max-limit=1G/1G", "=place-before=" + ref_que[0][".id"], "=comment=This queue was added by SCRIPT"],))
                             print "Result of adding new QUEUE - ", oper, "\n"
-                            res2 = a.response_handler(a.talk(["/queue/simple/print", "?target=" + que + "/32", "=.proplist=.id",]))
 
                         except:
                             print "\n WARNING! the queue was not added. Restart the script"
