@@ -9,7 +9,7 @@ count = 0
 
 # name of IPTV server
 dom = "cdn.nexttvnet.ru"
-mikrot="213.79.126.58"
+mikrot="10.77.33.1"
 user="nnk"
 psw="alwest5747"
 
@@ -21,7 +21,8 @@ def check_name():
         new_ip.append(check)
 
 # check if the new IP exist in the file test.txt
-def compare_ip(count):
+def compare_ip():
+    global count
     with open("test.txt", "r") as old:
         for line in old:
         # append all IPs to the lst for future checking on Mikrotik
@@ -70,7 +71,7 @@ def mt_conn():
                             print "\n WARNING! the queue was not added. Restart the script"
                     
                         else:
-                            if oper=="ERROR":
+                            if oper == "ERROR":
                                 print "Warning! The queue can't be installed! Unknown error from Router"
                             else:
                                 print "SUCCESS! queue for " + que + " has been installed"
@@ -80,9 +81,9 @@ def mt_conn():
 
 #main loop
 check_name()
-if len(new_ip)>0:
-    compare_ip(count)
+if len(new_ip) > 0:
+    compare_ip()
 if count == 0:
     add_new_ip()
-if len(new_ip)>0:
+if len(new_ip) > 0:
     mt_conn()
